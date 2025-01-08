@@ -4,11 +4,15 @@ from sqlalchemy.orm import Session
 from app.core.db import  get_db
 from app.domain.user import user_schema, user_crud
 from datetime import datetime 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 router = APIRouter(prefix="/api/user")
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
-SECRET_KEY = "4ab2fce7a6bd79e1c014396315ed322dd6edb1c5d975c6b74a2904135172c03c"
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 
 
